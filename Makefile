@@ -32,7 +32,7 @@ out/include/cgroup_monitor.skel.h: out/cgroup_monitor.bpf.o
 
 out/%.o: %.cpp out/include/cgroup_monitor.skel.h event.h
 	@echo "[CC]      $@"
-	@clang++ ${CFLAGS} -std=c++23 -c -o $@ $<
+	@clang++ ${CFLAGS} -std=c++20 -c -o $@ $<
 
 out/cgroup_monitor: out/cgroup_monitor.o out/poller.o out/cgroup.o
 	@echo "[LD]      $@"

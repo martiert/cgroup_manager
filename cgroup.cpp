@@ -53,18 +53,18 @@ void parse_cgroup_info()
         std::vector<std::string_view> parts;
         auto split = std::views::split(line, ' ');
         auto it = split.begin();
-        std::string_view source(*it);
+        std::string_view source(std::ranges::data(*it), std::ranges::size(*it));
         if (source == "cgroup" || source == "cgroup2") {
             MountInfo m;
-            m.source = std::string_view(*it);
+            m.source = std::string_view(std::ranges::data(*it), std::ranges::size(*it));
             ++it;
-            m.path = std::string_view(*it);
+            m.path = std::string_view(std::ranges::data(*it), std::ranges::size(*it));
             ++it;
-            m.type = std::string_view(*it);
+            m.type = std::string_view(std::ranges::data(*it), std::ranges::size(*it));
             ++it;
 
             for (auto const & w : std::views::split(*it, ','))
-                m.flags.emplace_back(std::string_view(w));
+                m.flags.emplace_back(std::string_view(std::ranges::data(w), std::ranges::size(w)));
             info.push_back(m);
         }
     }

@@ -9,7 +9,7 @@
   outputs = { self, nixpkgs, flake-utils }: 
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs { inherit system; };
-    in {
+    in rec {
       packages.default = pkgs.stdenv.mkDerivation {
         name = "cgroup_monitor";
         version = "1.0.0";
@@ -27,6 +27,11 @@
 
           pkg-config
           which
+        ];
+      };
+      devShells.default = pkgs.mkShell {
+        inputsFrom = [
+          packages.default
         ];
       };
     });
