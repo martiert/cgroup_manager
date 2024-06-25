@@ -11,7 +11,7 @@
       pkgs = import nixpkgs { inherit system; };
     in {
       packages.default = pkgs.stdenv.mkDerivation {
-        name = "cgroup-watcher";
+        name = "cgroup_monitor";
         version = "1.0.0";
 
         src = ./.;
@@ -26,6 +26,7 @@
           fmt.dev
 
           pkg-config
+          which
         ];
       };
     });

@@ -2,7 +2,7 @@
 #include "ringbuffer.hpp"
 #include "cgroup.hpp"
 #include "event.h"
-#include "exec.skel.h"
+#include "cgroup_monitor.skel.h"
 
 #include <sys/resource.h>
 #include <signal.h>
